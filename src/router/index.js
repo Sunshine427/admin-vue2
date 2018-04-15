@@ -6,6 +6,7 @@ import Home from '@/components/home/home'
 import Login from '@/components/login/login'
 import UserList from '@/components/user-list/user-list'
 import RolesList from '@/components/roles-list/roles-list'
+import RightsList from '@/components/rights-list/rights-list'
 
 // 引入获取token的文件
 import {getUserInfo} from '@/assets/js/auth.js'
@@ -32,6 +33,11 @@ const router = new Router({
           name: 'roles',
           path: '/roles',
           component: RolesList
+        },
+        {
+          name: 'rights',
+          path: '/rights',
+          component: RightsList
         }
       ]
     }

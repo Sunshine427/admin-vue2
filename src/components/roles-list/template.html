@@ -1,0 +1,111 @@
+<div>
+  <el-row>
+    <el-col :span="24">
+      <el-breadcrumb separator-class="el-icon-arrow-right" class='rightsBread'>
+        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item>权限管理</el-breadcrumb-item>
+        <el-breadcrumb-item>角色列表</el-breadcrumb-item>
+      </el-breadcrumb>
+    </el-col>
+  </el-row>
+  <el-button type="success" plain @click='dialogFormVisible=true'>添加角色</el-button>
+  <el-table
+      :data="rolesList"
+      style="width: 100%">
+      <el-table-column type="expand">
+        <template slot-scope="props">
+          <el-form label-position="left" inline class="demo-table-expand">
+            <el-form-item label="商品名称">
+              <span>{{ props.row.name }}</span>
+            </el-form-item>
+            <el-form-item label="所属店铺">
+              <span>{{ props.row.shop }}</span>
+            </el-form-item>
+            <el-form-item label="商品 ID">
+              <span>{{ props.row.id }}</span>
+            </el-form-item>
+            <el-form-item label="店铺 ID">
+              <span>{{ props.row.shopId }}</span>
+            </el-form-item>
+            <el-form-item label="商品分类">
+              <span>{{ props.row.category }}</span>
+            </el-form-item>
+            <el-form-item label="店铺地址">
+              <span>{{ props.row.address }}</span>
+            </el-form-item>
+            <el-form-item label="商品描述">
+              <span>{{ props.row.desc }}</span>
+            </el-form-item>
+          </el-form>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="#"
+        type="index"
+        width="100px">
+      </el-table-column>
+      <el-table-column
+        label="角色名称"
+        prop="roleName"
+        width = "180px">
+      </el-table-column>
+      <el-table-column
+        label="描述"
+        prop="roleDesc"
+        width = "380px">
+      </el-table-column>
+      <el-table-column
+        label="操作"
+        prop="desc"
+        width = "280px">
+        <template slot-scope="scope">
+          <el-button
+            type="primary"
+            icon="el-icon-edit"
+            plain size="mini"
+            @click = 'getRoleById(scope.row)'></el-button>
+          <el-button type="success" icon="el-icon-check" plain size="mini"></el-button>
+          <el-button
+            type="danger"
+            icon="el-icon-delete"
+            plain
+            size="mini"
+            @click='handleDeleteRole(scope.row)'></el-button>
+        </template>
+      </el-table-column>
+  </el-table>
+
+  <!-- 添加角色B -->
+  <el-dialog title="添加角色" :visible.sync="dialogFormVisible">
+  <el-form :model="addRolesForm" :rules="addRolesRules" ref="addRoleForm">
+    <el-form-item label="角色名称" :label-width="formLabelWidth" prop='roleName'>
+      <el-input v-model="addRolesForm.roleName" auto-complete="off"></el-input>
+    </el-form-item>
+    <el-form-item label="角色描述" :label-width="formLabelWidth" prop='roleDesc'>
+      <el-input v-model="addRolesForm.roleDesc" auto-complete="off"></el-input>
+    </el-form-item>
+  </el-form>
+  <div slot="footer" class="dialog-footer">
+    <el-button @click="dialogFormVisible = false">取 消</el-button>
+    <el-button type="primary" @click="handleAddroles('addRoleForm')">确 定</el-button>
+  </div>
+  </el-dialog>
+  <!-- 添加角色E -->
+
+  <!-- 编辑角色B -->
+  <el-dialog title="编辑角色" :visible.sync="dialogEditFormVisible">
+  <el-form :model="editRolesForm" :rules="addRolesRules" ref="editRoleForm">
+    <el-form-item label="角色名称" :label-width="formLabelWidth" prop='roleName'>
+      <el-input v-model="editRolesForm.roleName" auto-complete="off"></el-input>
+    </el-form-item>
+    <el-form-item label="角色描述" :label-width="formLabelWidth" prop='roleDesc'>
+      <el-input v-model="editRolesForm.roleDesc" auto-complete="off"></el-input>
+    </el-form-item>
+  </el-form>
+  <div slot="footer" class="dialog-footer">
+    <el-button @click="dialogEditFormVisible = false">取 消</el-button>
+    <el-button type="primary" @click="handleeditroles('editRoleForm')">确 定</el-button>
+  </div>
+  </el-dialog>
+  <!-- 编辑角色E -->
+</div>

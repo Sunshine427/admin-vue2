@@ -1,12 +1,4 @@
-<template>
-  <p>roles.....</p>
-</template>
-<script>
-export default {
-  data () {
-    return {}
-  }
-}
-</script>
-<style>
-</style>
+<!-- 引入文件 -->
+<template src='./template.html'></template>
+<script src='./script.js'></script>
+<style src='./style.css'></style>

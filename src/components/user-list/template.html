@@ -75,7 +75,7 @@
         label="操作"
         width='200'>
           <template slot-scope="scope">
-            <el-button type="primary" icon="el-icon-edit" plain @click="getUserByid(scope.row.id)"></el-button>
+            <el-button type="primary" icon="el-icon-edit" plain size='mini' @click="getUserByid(scope.row.id)"></el-button>
             <el-dialog title="编辑用户" :visible.sync="editChange">
               <el-form :model="userData" :rules="rules" ref="editRuleForm">
                 <el-form-item label="用户名" :label-width="formLabelWidth" prop="username">
@@ -93,11 +93,12 @@
                 <el-button type="primary" @click="saveEdit('editRuleForm')">确 定</el-button>
               </div>
             </el-dialog>
-            <el-button type="success" icon="el-icon-check" circle></el-button>
+            <el-button type="success" icon="el-icon-check" plain size='mini'></el-button>
             <el-button
               type="danger"
               icon="el-icon-delete"
               plain
+              size='mini'
               @click='deleteUser(scope.row.id)'></el-button>
           </template>
       </el-table-column>
