@@ -28,9 +28,13 @@
         width="180">
       </el-table-column>
       <el-table-column
-        prop="level"
         label="层级"
         width="180">
+          <template slot-scope='scope'>
+            <p v-if='scope.row.level==="0"'>一级</p>
+            <p v-else-if='scope.row.level==="1"'>二级</p>
+            <p v-else-if='scope.row.level==="2"'>三级</p>
+          </template>
       </el-table-column>
     </el-table>
   </div>

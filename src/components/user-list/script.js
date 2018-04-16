@@ -20,6 +20,7 @@ export default {
         mobile: ''
       },
       formLabelWidth: '120px',
+      loading: true,
       // 校验输入的数据是否符合规则
       rules: {
         username: [
@@ -81,6 +82,7 @@ export default {
       // console.log(total)
       this.tableData = data.users
       this.totalSize = total
+      this.loading = false
     },
 
     /*
